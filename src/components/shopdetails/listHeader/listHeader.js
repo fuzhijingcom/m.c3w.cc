@@ -37,15 +37,15 @@ class ListHeader extends Component{
 					rating={this.props.data.rating}
 					handleActivity={this.handleActivity.bind(this)}/>:null}
 				</ReactCSSTransitionGroup>
-				<div className='shoplist_header_bg' style={{backgroundImage:`url('//fuss10.elemecdn.com/${this.props.data.image_path?this.props.data.image_path:''}?imageMogr/format/webp/thumbnail/!40p/blur/50x40/')`}}>
+				<div className='shoplist_header_bg' style={{backgroundImage:`url('http://c3w.cc/public/sj_logo/${this.props.data.id}.jpg')`}}>
 				</div>
-				<nav>
+				{/* <nav>
 					<a href="javascript:history.back()" className='back'>
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 32" version="1.1"><path fill="#fff" d="M16.552 5.633l-2.044-2.044L2.243 15.854l12.265 12.557 2.044-2.044L6.331 15.854z"/></svg>
 					</a>
-				</nav>
+				</nav> */}
 				<div className="shoplist_header_main">
-					<img src={`//fuss10.elemecdn.com/${this.props.data.image_path?this.props.data.image_path:''}?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/`} alt=""/>
+					<img src={`http://c3w.cc/public/sj_logo/${this.props.data.id}.jpg`} alt=""/>
 					<div className="shoplist_header_content">
 						<h2 className='shoplist_header_name'>{this.props.data.name}</h2>
 						<p className='shop_header_delivery'>

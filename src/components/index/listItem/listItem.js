@@ -61,7 +61,7 @@ class ListItem extends Component{
 	}
 	handleClick(){
 		/*用户的地址hash和商家id*/
-		window.location.href=`/shop/${this.props.address}/${this.state.restaurant_id}`;
+		window.location.href=`#/shop/${this.props.address}/${this.state.restaurant_id}`;
 	}
 	/*图片格式化*/
 	_formatImg(){

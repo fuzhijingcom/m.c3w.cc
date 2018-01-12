@@ -8,15 +8,17 @@ class ActivityPage extends Component{
 		this.props.handleActivity()
 	}
 	render(){
+		console.log(this.props.allactivities)
 		let activitiesDOM=this.props.allactivities.map((value,index)=>
 			<li className='activityPage_main_list' key={index} >
 				<ActivitiesList key={index} value={value}/>
 			</li>);
+			console.log(this.props);
 		return (
 			<div ref={(cover)=>this.cover=cover} className='activityPage_cover'>
 				<div className='activityPage_cover_box'>
 					<div className='activityPage_main'>
-						<h2>永和大王（东单北大街店BJ063）</h2>
+						<h2>欢迎光临{this.props.promotion_info}</h2>
 						<h2>
 							<div className='activityPage_main_star'>
 								<Star rating={this.props.rating}/>

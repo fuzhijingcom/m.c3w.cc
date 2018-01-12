@@ -17,7 +17,8 @@ class Index extends Component{
 		if(localstate){
 			this.props.onLogin(localstate)
 		}
-		console.log(this.props.data2)
+		console.log(this.props.data2);
+		localStorage.setItem("currentSelected","");
 	}
 	_getLocal(name){
 		return JSON.parse(localStorage.getItem(name))

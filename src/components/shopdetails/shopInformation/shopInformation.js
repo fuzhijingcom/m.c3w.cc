@@ -47,7 +47,7 @@ class ShopInformation extends Component{
 						<li>
 							<span>商家电话</span>
 							<span>
-								<span><a href="tel:010-67113153">010-67113153</a></span>
+								<span><a href={`tel:${data.phone}`}>{data.phone}</a></span>
 								<svg className="arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 547 987" width="100%" height="100%"><path d="M0 931.973l51.2 54.613 494.933-494.933L51.2.133 0 51.333l440.32 440.32L0 931.973z"/></svg>
 							</span>
 						</li>
@@ -61,13 +61,13 @@ class ShopInformation extends Component{
 						</li>
 					</ul>
 				</section>
-				<section className="section">
+				{/* <section className="section">
 					<a href="/"
 					className="section-title information_other">
 						营业资质
 						<svg className="arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 547 987" width="100%" height="100%"><path d="M0 931.973l51.2 54.613 494.933-494.933L51.2.133 0 51.333l440.32 440.32L0 931.973z"/></svg>
 					</a>
-				</section>
+				</section> */}
 			</div>
 		)
 	}

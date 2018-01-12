@@ -1,14 +1,14 @@
 import React,{Component} from 'react';
 import Selected from '../selected/selected.js'
 import './footer.css'
-
 class Footer extends Component{
-	constructor(){
+	constructor(props){
 		super()
 		this.state={
 			showList:false
 		}
 		this._transitionEndCover=this._transitionEndCover.bind(this)
+		
 	}
 	componentDidMount(){
 		this.cover.addEventListener("webkitTransitionEnd", this._transitionEndCover, false); 
@@ -47,30 +47,52 @@ class Footer extends Component{
 			showList:!this.state.showList
 		})
 	}
+	// 结算
+	jiesuan(){
+		// var local=localStorage.getItem('currentSelected');
+		var local=JSON.stringify( localStorage.getItem('currentSelected') );
+		if(local){
+			// var localsecond=JSON.parse( local );
+			// console.log(local);
+			var id=this.props.data.id;
+			// console.log(id);
+			// console.log( typeof(localsecond) )
+			localStorage.setItem('currentSelected',"");
+			window.location.href="http://c3w.cc/entry/order/buy?id="+id+"&data="+JSON.parse(local);
+		}else {
+			return
+		}
+	}
 	/*清空*/
 	emptyAllFodds(){
 		this.props.emptyAllFodds();
 	}
 	render(){
-		
+		console.log(this.props);
+
 		let list=this.props.mainFoods.map((value,index)=>{
-			return(
-				<li className='footer_all_tip_main_list' key={index}>
-					<span className="entityList-entityname_1">
-						<em className="entityList-entityname_1_1">{value.name}</em>
-					</span>
-					<span className="entityList-entityname_2">
-						<span className="entityList-entityname_2_1">{value.price*value.quantity}</span>
-					</span>
-					<span className="entityList-entityname_3 food_add">
-						<Selected  
-						quantity={value.quantity} 
-						handleSubmit={this.handleFooterAdd.bind(this,index)}
-						handleSubmitCut={this.handleFooterCut.bind(this,index)}
-						/>
-					</span>
-				</li>
-			)
+			console.log(this.props.data.id)
+			console.log(value.restaurant_id )
+			// if( this.props.data.id==value.restaurant_id ){
+				return(
+					<li className='footer_all_tip_main_list' key={index}>
+						<span className="entityList-entityname_1">
+							<em className="entityList-entityname_1_1">{value.name}</em>
+						</span>
+						<span className="entityList-entityname_2">
+							<span className="entityList-entityname_2_1">{value.price*value.quantity}</span>
+						</span>
+						<span className="entityList-entityname_3 food_add">
+							<Selected  
+							quantity={value.quantity} 
+							handleSubmit={this.handleFooterAdd.bind(this,index)}
+							handleSubmitCut={this.handleFooterCut.bind(this,index)}
+							/>
+						</span>
+					</li>
+				)				
+			// }
+
 		})
 		return(
 			<footer className='shop_footer'>
@@ -101,11 +123,11 @@ class Footer extends Component{
 						</p>
 						<p className='kd_price'>{this.props.data.piecewise_agent_fee}</p>
 					</div>
-					<a href="javascript:void(0)" className={`shoping_submit 
+					<a href="javascript:;" className={`shoping_submit 
 						${this.props.allPirce>=this.props.data.float_minimum_order_amount
 						?'':'isdisable'}`}>
 						{this.props.allPirce>=this.props.data.float_minimum_order_amount
-						?<span>去结算</span>
+						?<span onClick={this.jiesuan.bind(this)}>去结算</span>
 						:<span>还差¥{this.props.data.float_minimum_order_amount-this.props.allPirce}起送</span>}
 					</a>
 				</div>

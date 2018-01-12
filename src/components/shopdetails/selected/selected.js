@@ -25,6 +25,7 @@ class Selected extends Component{
 	}
 	handleSubmit(event){
 		TheBall.newBall(event)
+		console.log(this.props.handleSubmit)
 		if(this.props.handleSubmit){
 			this.props.handleSubmit(event)
 		}

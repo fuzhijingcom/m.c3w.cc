@@ -125,27 +125,32 @@ class Commodity extends Component{
 	listHeight=[]
 	/*计算当前分类*/
 	_posCalc(pos,y){
-		if(pos.length < 2){//只有一个分类返回当前位置
+		// console.log(pos)
+		if(pos.length < 2 && pos.length!=0 ){//只有一个分类返回当前位置
+			console.log(this._run(pos[0].index));
 			this._run(pos[0].index);
 			return;
 		}
-		let prevArr=pos.slice(0,parseInt(pos.length/2,10));
-		let nextArr=pos.slice(parseInt(pos.length/2,10));
-		let prevArrIndex=prevArr[prevArr.length-1];
-		let nextArrIndex=nextArr[0];
-		if(prevArrIndex.pos>Math.abs(y)){
-			this._posCalc(prevArr,y);
-			return;
-		}else if(nextArrIndex.pos<Math.abs(y)){
-			this._posCalc(nextArr,y);
-			return;
-		}else if(prevArrIndex.pos<=Math.abs(y)&&nextArrIndex.pos>Math.abs(y)){
-			if(prevArrIndex.index===this.state.current){return;}
-			this.setState({
-				current:prevArrIndex.index
-			})
-			return;
+		if(pos.length!=0){
+			let prevArr=pos.slice(0,parseInt(pos.length/2,10));
+			let nextArr=pos.slice(parseInt(pos.length/2,10));
+			let prevArrIndex=prevArr[prevArr.length-1];
+			let nextArrIndex=nextArr[0];
+			if(prevArrIndex.pos>Math.abs(y)){
+				this._posCalc(prevArr,y);
+				return;
+			}else if(nextArrIndex.pos<Math.abs(y)){
+				this._posCalc(nextArr,y);
+				return;
+			}else if(prevArrIndex.pos<=Math.abs(y)&&nextArrIndex.pos>Math.abs(y)){
+				if(prevArrIndex.index===this.state.current){return;}
+				this.setState({
+					current:prevArrIndex.index
+				})
+				return;
+			}			
 		}
+
 	}
 	/*图片格式化*/
 	_formatImg(src){
@@ -311,7 +316,8 @@ class Commodity extends Component{
 					"weight": thisData.specfoods[0].weight,
 					"extra": {},
 					"view_discount_price": thisData.specfoods[0].price*selectNum,
-					"view_original_price": thisData.specfoods[0].price*selectNum
+					"view_original_price": thisData.specfoods[0].price*selectNum,
+					"restaurant_id":thisData.restaurant_id
 				})
 				obj=alreadySelect;
 			}
@@ -335,7 +341,8 @@ class Commodity extends Component{
 				    	    "weight": thisData.specfoods[0].weight,
 				    	    "extra": {},
 				    	    "view_discount_price": thisData.specfoods[0].price*selectNum,
-				    	    "view_original_price": thisData.specfoods[0].price*selectNum
+							"view_original_price": thisData.specfoods[0].price*selectNum,
+							"restaurant_id":thisData.restaurant_id
 				    	}
 				    ],
 				}

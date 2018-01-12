@@ -15,7 +15,7 @@ class EvaluateSmart extends Component{
 	}
 	componentDidMount(){
 		/*头评价*/
-		fetch(`/api/ugc//v2/restaurants/${this.props.id}/ratings/scores`)
+		fetch(`/api/ugc/v2/restaurants/${this.props.id}/ratings/scores`)
 		.then(response=>{return response.json()})
 		.then(dataJson=>{
 			this.setState({
