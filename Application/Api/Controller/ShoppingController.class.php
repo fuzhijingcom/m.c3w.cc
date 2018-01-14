@@ -186,7 +186,7 @@ class ShoppingController extends Controller {
 
 
 
-                if(I('debug') == true){
+          //  if(I('debug') == true){
                     
                     $data1 =  '[
     
@@ -302,20 +302,30 @@ class ShoppingController extends Controller {
                     // dump($arr);
 
 
-                    // dump($foodarr);
+                     //dump($foodarr);
 
-                    $datadata = array_merge_recursive($arr,$foodarr);
+                    //$datadata = array_merge_recursive($arr,$foodarr);
 
-                        // dump($datadata);
+                       // dump($arr);
 
-                        $json = json_encode($datadata,JSON_UNESCAPED_UNICODE);
+                        $json = json_encode($foodarr,JSON_UNESCAPED_UNICODE);
+                       // $json = str_replace(' ', '', $json);
+                       $arr = json_encode($arr,JSON_UNESCAPED_UNICODE);
+                      // echo $arr;
+                    //去除最后一位，在最后加上
 
-                        echo $json;
+                    echo substr($arr, 0, -2);
+                       echo ',';
 
-               }else{
+                       echo substr($json,1);
+                       echo ']';
+                      // echo "[".substr($json,5);
 
-                    echo $data;
-                }
+      //  }else{
+
+             //echo '<br>';
+                   // echo $data;
+   //  }
 
 
         }
