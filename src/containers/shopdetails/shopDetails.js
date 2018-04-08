@@ -23,7 +23,7 @@ class ShopDetails extends Component{
 	componentDidMount(){
 		/*{this.props.id}              {this.props.address}*/
 		/*公告*/
-		fetch(`/api/shopping/restaurant/${this.props.id}?extras[]=activities&extras[]=albums&extras[]=license&extras[]=identification&extras[]=qualification`)
+		fetch(`/restapi/shopping/restaurant/${this.props.id}?extras[]=activities&extras[]=albums&extras[]=license&extras[]=identification&extras[]=qualification`)
 		.then(response=>response.json())
 		.then(dataJson=>{
 			console.log()

@@ -9,7 +9,7 @@ class ShopInformationSmart extends Component{
 		}
 	}
 	componentDidMount(){
-		fetch(`/api/shopping/restaurant/${this.props.id}?extras[]=activities&extras[]=albums&extras[]=license&extras[]=identification&extras[]=qualification`)
+		fetch(`/restapi/shopping/restaurant/${this.props.id}?extras[]=activities&extras[]=albums&extras[]=license&extras[]=identification&extras[]=qualification`)
 		.then(response=>{return response.json()})
 		.then(dataJson=>{
 			this.setState({

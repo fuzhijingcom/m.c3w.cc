@@ -1,98 +1,26 @@
 /*热搜*/
 import $ from "zepto-ajax";
-export const hot_data=[
-    {
-        "is_highlight": 0,
-        "link": "",
-        "search_word": "粥",
-        "source": "3",
-        "type": 1,
-        "url": "",
-        "word": "粥"
-    },
-    {
-        "is_highlight": 0,
-        "link": "",
-        "search_word": "肯德基",
-        "source": "3",
-        "type": 1,
-        "url": "",
-        "word": "肯德基"
-    },
-    {
-        "is_highlight": 0,
-        "link": "",
-        "search_word": "庆丰包子铺",
-        "source": "3",
-        "type": 1,
-        "url": "",
-        "word": "庆丰包子铺"
-    },
-    {
-        "is_highlight": 0,
-        "link": "eleme://web?url=https://app-resource.ele.me/prod/SyfilPLYW.html&target_name=&animation_type=1&banner_type=0&business_flag=0",
-        "search_word": "",
-        "source": "4",
-        "type": 3,
-        "url": "",
-        "word": "易果49减20"
-    },
-    {
-        "is_highlight": 0,
-        "link": "",
-        "search_word": "饺子",
-        "source": "3",
-        "type": 1,
-        "url": "",
-        "word": "饺子"
-    },
-    {
-        "is_highlight": 0,
-        "link": "",
-        "search_word": "麦当劳",
-        "source": "3",
-        "type": 1,
-        "url": "",
-        "word": "麦当劳"
-    },
-    {
-        "is_highlight": 0,
-        "link": "",
-        "search_word": "眉州小吃",
-        "source": "3",
-        "type": 1,
-        "url": "",
-        "word": "眉州小吃"
-    },
-    {
-        "is_highlight": 0,
-        "link": "",
-        "search_word": "赛百味",
-        "source": "3",
-        "type": 1,
-        "url": "",
-        "word": "赛百味"
-    },
-    {
-        "is_highlight": 0,
-        "link": "",
-        "search_word": "蛋糕",
-        "source": "3",
-        "type": 1,
-        "url": "",
-        "word": "蛋糕"
-    },
-    {
-        "is_highlight": 0,
-        "link": "",
-        "search_word": "煎饼",
-        "source": "3",
-        "type": 1,
-        "url": "",
-        "word": "煎饼"
-    }
-]
 
+var hotdata = "";
+(function(){
+    $.ajax({
+        url:"/api/data/hot_data",
+        type:"get",
+        async:false,
+        dataType:"json",
+        success:function(data1){
+           
+            hotdata = data1;
+        },
+        error:function(data1){
+            //console.log("error"+data1);
+        }
+    })
+})()
+
+export const hot_data=hotdata;
+console.log(hot_data);
+console.log(typeof hot_data);
 
 /*天气*/
 export const weather={
@@ -105,42 +33,42 @@ export const weather={
 /*地址*/
 
 export const address={
-    "name": "东城区天安门",
-    "address": "北京市东城区西长安街",
-    "city": "北京市",
+    "name": "佛山南海",
+    "address": "广东轻工职业技术学院",
+    "city": "佛山市",
     "city_id": 3,
     "latitude": 39.908859,
     "longitude": 116.397392,
-    "geohash": "wx4g09jvzy8w"
+    "geohash": "baixiao"
 }
 
 
 var shuju="";
 (function(){
     $.ajax({
-      url: "/list/api/data/banner",
+      url: "/api/data/banner",
     	//url: "http://m.c3w.cc/api/data/banner",
         type: "get",
         async: false,
         // contentType: "application/json;charset=UTF8",
          dataType: "json",
         success: function(data){
-            console.log(data);
+            //console.log(data);
             // return data
-            console.log(typeof data);
+            //console.log(typeof data);
             shuju=data;
         },
         error: function(data){
-            console.log("error"+data);
+            //console.log("error"+data);
         }
     })
 })()
-console.log(shuju);
 
+// console.log(shuju);
 
 export const bannerData=[shuju];
-console.log(typeof shuju);
-console.log([shuju]);
+//console.log(typeof shuju);
+//console.log([shuju]);
 
 /*主内容*/
 /*https://restapi.ele.me/shopping/restaurants?latitude=39.90323&longitude=116.39772&offset=20&limit=0&extras[]=activities&terminal=h5*/

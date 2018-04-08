@@ -12,7 +12,7 @@ class CommoditySmart extends Component{
 		}
 	}
 	componentWillMount(){
-		fetch(`/api/shopping/v2/menu?restaurant_id=${this.props.id}`)
+		fetch(`/restapi/shopping/v2/menu?restaurant_id=${this.props.id}`)
 		.then(response=>{return response.json()})
 		.then(dataJson=>{
 			this.setState({

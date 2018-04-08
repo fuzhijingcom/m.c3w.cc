@@ -78,16 +78,16 @@ module.exports = function(proxy, allowedHost) {
     },
     public: allowedHost,
     proxy: {
-      "/api": {
+      "/restapi": {
           target: "https://restapi.ele.me",
           secure: false,
-          pathRewrite: {"^/api" : ""},
+          pathRewrite: {"^/restapi" : ""},
           changeOrigin : true
         },
-      "/list": {
-          target: "http://c3w.cc",
+      "/api": {
+          target: "http://m.c3w.cc/api",
           secure: false,
-          pathRewrite: {"^/list" : ""},
+          pathRewrite: {"^/api" : ""},
           changeOrigin : true     
       }
     },

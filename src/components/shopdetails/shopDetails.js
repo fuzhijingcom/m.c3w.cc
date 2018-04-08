@@ -30,7 +30,7 @@ class ShopDetails extends Component{
 		/*{this.props.id}              {this.props.address}*/
 		/*公告*/
 		
-		fetch(`/api/shopping/restaurant/${this.props.id}?extras[]=activities&extras[]=albums&extras[]=license&extras[]=identification&extras[]=qualification`)
+		fetch(`http://m.c3w.cc/api/index.php?m=api&c=restaurant&restaurant_id=${this.props.id}`)
 		.then(response=>response.json())
 		.then(dataJson=>{
 			this.setState({

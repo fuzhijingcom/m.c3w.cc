@@ -77,7 +77,7 @@ class ListItem extends Component{
 		try{
 			return JSON.parse(localStorage.getItem("currentSelected"))
 		}catch (e){
-			console.log(e)
+			//console.log(e)
 		}
 	}
 	_getNum(){

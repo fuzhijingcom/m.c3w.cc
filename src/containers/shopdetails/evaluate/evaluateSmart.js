@@ -15,7 +15,7 @@ class EvaluateSmart extends Component{
 	}
 	componentDidMount(){
 		/*头评价*/
-		fetch(`/api/ugc/v2/restaurants/${this.props.id}/ratings/scores`)
+		fetch(`/restapi/ugc/v2/restaurants/${this.props.id}/ratings/scores`)
 		.then(response=>{return response.json()})
 		.then(dataJson=>{
 			this.setState({
@@ -23,7 +23,7 @@ class EvaluateSmart extends Component{
 			})
 		});
 
-		fetch(`/api/ugc/v2/restaurants/${this.props.id}/ratings?has_content=true&offset=0&limit=10`)
+		fetch(`/restapi/ugc/v2/restaurants/${this.props.id}/ratings?has_content=true&offset=0&limit=10`)
 		.then(response=>{return response.json()})
 		.then(dataJson=>{
 			this.setState({
@@ -31,7 +31,7 @@ class EvaluateSmart extends Component{
 			})
 		});
 		/*tags*/
-		fetch(`/api/ugc/v2/restaurants/${this.props.id}/ratings/tags`)
+		fetch(`/restapi/ugc/v2/restaurants/${this.props.id}/ratings/tags`)
 		.then(response=>{return response.json()})
 		.then(dataJson=>{
 			this.setState({
